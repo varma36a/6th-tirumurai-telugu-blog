@@ -22,6 +22,10 @@ def write_page(page_num: int) -> None:
     }
     (folder / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
+    tamil = folder / "tamil.md"
+    if not tamil.exists() or tamil.read_text(encoding="utf-8").strip().startswith("_Add"):
+        tamil.write_text("_Add original Tamil from the book._\n", encoding="utf-8")
+
     pron = folder / "pronunciation.md"
     if not pron.exists() or pron.read_text(encoding="utf-8").strip().startswith("_Add"):
         pron.write_text("_Add Tamil pronunciation in Telugu script._\n", encoding="utf-8")
@@ -40,6 +44,7 @@ def main() -> None:
         json.dumps({"book_page": 0, "title": "Template", "notes": ""}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
+    (template / "tamil.md").write_text("_Add original Tamil from the book._\n", encoding="utf-8")
     (template / "pronunciation.md").write_text("_Add Tamil pronunciation in Telugu script._\n", encoding="utf-8")
     (template / "telugu.md").write_text("_Add Telugu meaning._\n", encoding="utf-8")
 

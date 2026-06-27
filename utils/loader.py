@@ -21,6 +21,7 @@ class PageMeta:
 @dataclass(frozen=True)
 class PageContent:
     meta: PageMeta
+    tamil: str
     pronunciation: str
     telugu: str
     folder: Path
@@ -65,6 +66,7 @@ def load_page(page_id: str) -> PageContent | None:
 
     return PageContent(
         meta=_load_meta(page_dir),
+        tamil=_read_text(page_dir / "tamil.md"),
         pronunciation=_read_text(page_dir / "pronunciation.md"),
         telugu=_read_text(page_dir / "telugu.md"),
         folder=page_dir,

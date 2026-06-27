@@ -4,10 +4,9 @@ Translate your **500-page original book** page by page into:
 
 | File | Purpose |
 |------|---------|
+| `tamil.md` | Original Tamil from the book |
 | `pronunciation.md` | Tamil pronunciation written in Telugu script |
 | `telugu.md` | Telugu meaning |
-
-Keep the Tamil original in your book — this repo stores only your translations.
 
 ## Setup
 
@@ -27,6 +26,7 @@ Edit files in `content/page_NNN/` (001 to 500):
 ```
 content/page_042/
 ├── meta.json
+├── tamil.md
 ├── pronunciation.md
 └── telugu.md
 ```

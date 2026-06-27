@@ -13,10 +13,17 @@ st.set_page_config(
 apply_styles()
 
 pages = list_pages()
-filled = sum(1 for p in pages if load_page(p.id) and is_filled(load_page(p.id).pronunciation) and is_filled(load_page(p.id).telugu))
+filled = sum(
+    1
+    for p in pages
+    if (page := load_page(p.id))
+    and is_filled(page.tamil)
+    and is_filled(page.pronunciation)
+    and is_filled(page.telugu)
+)
 
 st.sidebar.title("6th Tirumurai")
-st.sidebar.caption("500-page book · pronunciation + Telugu meaning")
+st.sidebar.caption("500-page book · Tamil + pronunciation + Telugu")
 st.sidebar.markdown("---")
 
 if not pages:
@@ -43,9 +50,10 @@ st.sidebar.markdown(
     """
     **Add one page**
     1. Open `content/page_NNN/`
-    2. Edit `pronunciation.md`
-    3. Edit `telugu.md`
-    4. Refresh this app
+    2. Edit `tamil.md`
+    3. Edit `pronunciation.md`
+    4. Edit `telugu.md`
+    5. Refresh this app
     """
 )
 
@@ -55,8 +63,9 @@ if selected_id is None:
         """
         Translate page by page from your **500-page original book**.
 
-        Each book page has two files only:
+        Each book page has three files:
 
+        - `tamil.md` — original Tamil from the book
         - `pronunciation.md` — Tamil sounds in Telugu script
         - `telugu.md` — Telugu meaning
 

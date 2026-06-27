@@ -11,6 +11,14 @@ def apply_styles() -> None:
     st.markdown(
         """
         <style>
+        .tamil-block {
+            font-size: 1.35rem;
+            line-height: 1.9;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0.75rem;
+            background: #FFFDF8;
+            border-left: 4px solid #C17817;
+        }
         .pronunciation-block {
             font-size: 1.1rem;
             line-height: 1.85;
@@ -64,13 +72,17 @@ def render_page(page: PageContent) -> None:
 
     st.markdown("---")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
-        _render_block("Tamil Pronunciation (Telugu script)", page.pronunciation, "pronunciation-block")
+        _render_block("Original Tamil", page.tamil, "tamil-block")
     with col2:
+        _render_block("Tamil Pronunciation (Telugu script)", page.pronunciation, "pronunciation-block")
+    with col3:
         _render_block("Telugu Meaning", page.telugu, "telugu-block")
 
     with st.expander("Stacked view (mobile-friendly)"):
+        st.subheader("Original Tamil")
+        st.markdown(page.tamil or "_Not added yet._")
         st.subheader("Tamil Pronunciation")
         st.markdown(page.pronunciation or "_Not translated yet._")
         st.subheader("Telugu Meaning")
