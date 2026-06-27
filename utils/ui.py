@@ -10,6 +10,11 @@ from utils.loader import PageContent, is_filled
 
 ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
 VALLALAR_IMAGE = ASSETS_DIR / "vallalar.jpg"
+LIGHT_WORKER_IMAGES = [
+    ASSETS_DIR / "light_worker_1.jpg",
+    ASSETS_DIR / "light_worker_2.jpg",
+]
+MAHAMANTRA_IMAGE = ASSETS_DIR / "mahamantra.png"
 
 
 def apply_styles() -> None:
@@ -204,6 +209,27 @@ def apply_styles() -> None:
             border-radius: 1rem;
             padding: 1.2rem 1.3rem;
         }
+        .light-worker-frame {
+            border: 3px solid #d4af37;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(107, 58, 24, 0.12);
+            background: #fff;
+        }
+        .light-worker-caption {
+            text-align: center;
+            color: #7a4b22;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .mantra-banner {
+            margin: 1rem 0 1.5rem 0;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(90deg, #fff8ef, #fdebd0);
+            border: 1px solid #e8c992;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -238,6 +264,29 @@ def render_home(filled: int, total: int) -> None:
             """,
             unsafe_allow_html=True,
         )
+
+    st.markdown("### Light Workers")
+    st.markdown(
+        '<p style="color:#7a4b22;margin-top:-0.5rem;">'
+        "Arutperunjothi — carrying the divine light through translation and service."
+        "</p>",
+        unsafe_allow_html=True,
+    )
+
+    if MAHAMANTRA_IMAGE.exists():
+        st.markdown('<div class="mantra-banner">', unsafe_allow_html=True)
+        st.image(str(MAHAMANTRA_IMAGE), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    lw_cols = st.columns(len(LIGHT_WORKER_IMAGES))
+    captions = ["Divine Jyoti — Arutperunjothi", "Light workers in service"]
+    for col, image_path, caption in zip(lw_cols, LIGHT_WORKER_IMAGES, captions):
+        with col:
+            st.markdown('<div class="light-worker-frame">', unsafe_allow_html=True)
+            if image_path.exists():
+                st.image(str(image_path), use_container_width=True)
+            st.markdown("</div>", unsafe_allow_html=True)
+            st.markdown(f'<p class="light-worker-caption">{caption}</p>', unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
     with c1:

@@ -5,7 +5,7 @@ from utils.ui import apply_styles, render_home, render_page
 
 st.set_page_config(
     page_title="6th Tirumurai — Telugu Translation",
-    page_icon="🕉️",
+    page_icon="📖",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -22,7 +22,7 @@ filled = sum(
     and is_filled(page.telugu)
 )
 
-st.sidebar.markdown("### 🕉️ 6th Tirumurai")
+st.sidebar.markdown("### 6th Tirumurai")
 st.sidebar.caption("Tamil · pronunciation · Telugu")
 st.sidebar.markdown("---")
 

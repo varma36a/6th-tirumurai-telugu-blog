@@ -51,4 +51,6 @@ Repository: https://github.com/varma36a/6th-tirumurai-telugu-blog
 
 ## Assets
 
-- `assets/vallalar.jpg` — shown on the home page
+- `assets/vallalar.jpg` — Vallalar standing portrait on home page
+- `assets/light_worker_1.jpg`, `assets/light_worker_2.jpg` — light worker images on home page
+- `assets/mahamantra.png` — Arutperunjothi mantra banner
