@@ -48,3 +48,7 @@ Refresh the Streamlit app after saving.
 Push to GitHub and deploy on [Streamlit Community Cloud](https://share.streamlit.io) with main file `app.py`.
 
 Repository: https://github.com/varma36a/6th-tirumurai-telugu-blog
+
+## Assets
+
+- `assets/vallalar.jpg` — shown on the home page
