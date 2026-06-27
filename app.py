@@ -35,25 +35,48 @@ if view == "Read Page":
         st.sidebar.warning("No pages yet. Run `python scripts/init_pages.py`.")
     else:
         st.sidebar.caption(f"{filled}/{len(pages)} pages completed")
-        page_num = st.sidebar.number_input(
-            "Go to book page",
-            min_value=1,
-            max_value=len(pages),
-            value=1,
-            step=1,
-        )
+
+        if "book_page" not in st.session_state:
+            st.session_state.book_page = 1
+
+        st.sidebar.markdown("**Go to book page**")
+        prev_col, page_col, next_col = st.sidebar.columns([1, 3, 1])
+
+        with prev_col:
+            if st.button("−", use_container_width=True, help="Previous page"):
+                st.session_state.book_page = max(1, st.session_state.book_page - 1)
+
+        with next_col:
+            if st.button("+", use_container_width=True, help="Next page"):
+                st.session_state.book_page = min(len(pages), st.session_state.book_page + 1)
+
+        with page_col:
+            page_num = st.number_input(
+                "Page number",
+                min_value=1,
+                max_value=len(pages),
+                value=st.session_state.book_page,
+                step=1,
+                label_visibility="collapsed",
+            )
+
+        st.session_state.book_page = int(page_num)
+
         by_number = {p.book_page: p.id for p in pages}
-        selected_id = by_number.get(int(page_num))
+        selected_id = by_number.get(st.session_state.book_page)
 
         query = st.sidebar.text_input("Search", placeholder="page title")
         if query:
             filtered = [p for p in pages if query.lower() in p.title.lower() or query in str(p.book_page)]
             if filtered:
-                selected_id = st.sidebar.selectbox(
+                picked = st.sidebar.selectbox(
                     "Matches",
                     options=[p.id for p in filtered],
                     format_func=lambda pid: next(p.title for p in pages if p.id == pid),
                 )
+                selected_id = picked
+                match = next(p for p in pages if p.id == picked)
+                st.session_state.book_page = match.book_page
 
     st.sidebar.markdown("---")
     st.sidebar.markdown(

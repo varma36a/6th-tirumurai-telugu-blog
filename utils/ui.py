@@ -24,18 +24,48 @@ def apply_styles() -> None:
         [data-testid="stSidebar"] {
             background: linear-gradient(180deg, #2b1608 0%, #4a2812 55%, #6b3a18 100%);
         }
-        [data-testid="stSidebar"] * {
+        [data-testid="stSidebar"] .stMarkdown p,
+        [data-testid="stSidebar"] .stMarkdown li,
+        [data-testid="stSidebar"] .stMarkdown strong,
+        [data-testid="stSidebar"] .stCaption,
+        [data-testid="stSidebar"] label,
+        [data-testid="stSidebar"] h1,
+        [data-testid="stSidebar"] h2,
+        [data-testid="stSidebar"] h3 {
             color: #fff8ef !important;
         }
-        [data-testid="stSidebar"] .stMarkdown, [data-testid="stSidebar"] label,
-        [data-testid="stSidebar"] .stCaption, [data-testid="stSidebar"] p,
-        [data-testid="stSidebar"] span, [data-testid="stSidebar"] div {
-            color: #fff8ef !important;
+        [data-testid="stSidebar"] input[type="number"],
+        [data-testid="stSidebar"] input[type="text"] {
+            background: #fff8ef !important;
+            color: #2b1608 !important;
+            border: 1px solid #c9923e !important;
+            caret-color: #2b1608 !important;
         }
-        [data-testid="stSidebar"] input, [data-testid="stSidebar"] .stNumberInput input {
-            background: rgba(255, 248, 239, 0.12) !important;
-            color: #fff8ef !important;
-            border: 1px solid rgba(255, 214, 153, 0.35) !important;
+        [data-testid="stSidebar"] input::placeholder {
+            color: #8a6135 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stNumberInputStepUp"],
+        [data-testid="stSidebar"] [data-testid="stNumberInputStepDown"],
+        [data-testid="stSidebar"] [data-testid="stNumberInputStepUp"] button,
+        [data-testid="stSidebar"] [data-testid="stNumberInputStepDown"] button {
+            color: #2b1608 !important;
+            background: #f5e6d3 !important;
+            border-color: #c9923e !important;
+        }
+        [data-testid="stSidebar"] .stButton > button {
+            background: #fff8ef !important;
+            color: #4a2812 !important;
+            border: 1px solid #c9923e !important;
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+        }
+        [data-testid="stSidebar"] .stButton > button:hover {
+            background: #f5e6d3 !important;
+            border-color: #b8860b !important;
+        }
+        [data-testid="stSidebar"] [data-baseweb="select"] > div {
+            background: #fff8ef !important;
+            color: #2b1608 !important;
         }
         .hero-wrap {
             background: linear-gradient(135deg, #fff8ef 0%, #fdebd0 45%, #f6d7a8 100%);
@@ -63,7 +93,7 @@ def apply_styles() -> None:
             overflow: hidden;
             box-shadow: 0 10px 28px rgba(74, 40, 18, 0.18);
             background: #fff;
-            max-width: 260px;
+            max-width: 300px;
             margin: 0 auto;
         }
         .hero-quote {
