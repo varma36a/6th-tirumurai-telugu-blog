@@ -72,6 +72,28 @@ def apply_styles() -> None:
             background: #fff8ef !important;
             color: #2b1608 !important;
         }
+        [data-testid="stSidebar"] [data-testid="stRadio"] label,
+        [data-testid="stSidebar"] [data-testid="stRadio"] label span,
+        [data-testid="stSidebar"] [data-testid="stRadio"] label p,
+        [data-testid="stSidebar"] [data-testid="stRadio"] label div {
+            color: #2b1608 !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stRadio"] label {
+            background: #fff8ef !important;
+            border: 1px solid #c9923e !important;
+            border-radius: 0.65rem !important;
+            padding: 0.45rem 0.75rem !important;
+            margin-bottom: 0.35rem !important;
+        }
+        [data-testid="stSidebar"] [data-testid="stRadio"] [data-baseweb="radio"] > div {
+            background-color: #fff8ef !important;
+            border-color: #b8860b !important;
+        }
+        [data-testid="stSidebar"] .nav-active > button {
+            background: #b8860b !important;
+            color: #fff8ef !important;
+            border-color: #d4af37 !important;
+        }
         .hero-wrap {
             background: linear-gradient(135deg, #fff8ef 0%, #fdebd0 45%, #f6d7a8 100%);
             border: 1px solid #e8c992;

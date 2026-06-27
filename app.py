@@ -26,7 +26,21 @@ st.sidebar.markdown("### 6th Tirumurai")
 st.sidebar.caption("Tamil · pronunciation · Telugu")
 st.sidebar.markdown("---")
 
-view = st.sidebar.radio("Menu", ["Home", "Read Page"], label_visibility="collapsed")
+if "view" not in st.session_state:
+    st.session_state.view = "Home"
+
+st.sidebar.markdown("**Navigate**")
+nav_home, nav_read = st.sidebar.columns(2)
+with nav_home:
+    if st.button("Home", use_container_width=True, key="nav_home"):
+        st.session_state.view = "Home"
+with nav_read:
+    if st.button("Read Page", use_container_width=True, key="nav_read"):
+        st.session_state.view = "Read Page"
+
+view = st.session_state.view
+st.sidebar.caption(f"Current: **{view}**")
+st.sidebar.markdown("---")
 
 selected_id = None
 
